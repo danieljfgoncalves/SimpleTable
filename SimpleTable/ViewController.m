@@ -30,10 +30,21 @@ Recipe *myRecipes;
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ Implemented Delegate method number of rows in section
+ returns: returns the number of rows for the table view
+ */
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return [myRecipes.recipes count];
 }
+
+/*
+ Implemented Delegate method cellForRowAtIndexPath
+ Asks the data source for a cell to insert in a particular location of the table view.
+ The returned UITableViewCell object is frequently one that the application reuses for performance reasons.
+ */
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -42,6 +53,7 @@ Recipe *myRecipes;
     
     cell.textLabel.text = [myRecipes.recipes objectAtIndex:indexPath.row];
     
+    // Added an Image to each cell 
     cell.imageView.image = [UIImage imageNamed:@"creme_brelee"];
     return cell;
 }
