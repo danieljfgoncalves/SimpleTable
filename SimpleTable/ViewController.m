@@ -8,22 +8,21 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
-{
-    NSArray *recipes;
-}
+
+Recipe *myRecipes;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    // Initialize table data
-    recipes = @[@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger",
-                @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee",
-                @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"JapaneseNoodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini"];
+    // Initiate a instance of the Recipe Class
+    myRecipes = [[Recipe alloc]init];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +32,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [recipes count];
+    return [myRecipes.recipes count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,7 +40,7 @@
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    cell.textLabel.text = [recipes objectAtIndex:indexPath.row];
+    cell.textLabel.text = [myRecipes.recipes objectAtIndex:indexPath.row];
     
     cell.imageView.image = [UIImage imageNamed:@"creme_brelee"];
     return cell;
